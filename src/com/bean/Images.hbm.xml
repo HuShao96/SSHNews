@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.bean.Images" table="images">
+	<id name="imid" column="imid">
+		<generator class="native"></generator>
+	</id>
+	<property name="imtitle" column="imtitle"></property>
+	<property name="imname" column="imname"></property>
+	<property name="imdate" column="imdate"></property>
+	<property name="imstate" column="imstate"></property>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.bean.Catalog" table="catalog">
+	<id name="caid" column="caid">
+		<generator class="native"></generator>
+	</id>
+	<property name="caname" column="caname"></property>
+	<property name="canumber" column="canumber"></property>
+	<property name="castate" column="castate"></property>
+	<!-- 表示栏目所有新闻 
+	set name值：一的实体类里面表示多的set集合名称
+	inverse: false 双向绑定 true 单向
+	cascade: all 所有情况下（增删改）进行关联操作
+			save-update 在（增修）进行操作
+	-->
+	<set name="articles" inverse="true" cascade="all" lazy="true">
+		<!-- 外键column:外键名称-->
+		<key column="caid"></key>
+		<!-- clss,新闻的实体类全路径 -->
+		<one-to-many class="com.bean.Article"/>
+	</set>
+</class>
+</hibernate-mapping>

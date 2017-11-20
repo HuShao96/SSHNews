@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.bean.Article" table="article">
+	<id name="arid" column="arid">
+		<generator class="uuid"></generator>
+	</id>
+	<property name="arnumber" column="arnumber"></property>
+	<property name="artitle" column="artitle"></property>
+	<property name="arcontent" column="arcontent"></property>
+	<property name="aruser" column="aruser"></property>
+	<property name="artime" column="artime"></property>
+	<property name="arstate" column="arstate"></property>
+	<property name="clicks" column="clicks"></property>
+	<!-- 新闻所属栏目
+	name:新闻实体类中栏目对象的名称
+	class: 栏目的全路径
+	column: 外键名称
+	 -->
+	<many-to-one name="catalog" class="com.bean.Catalog" column="caid"> </many-to-one>
+</class>
+</hibernate-mapping>

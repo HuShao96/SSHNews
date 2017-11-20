@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+ 	 <!-- 指定国际化资源文件的baseName为messageResource -->
+     <constant name="struts.custom.i18n.resources" value="messageResource"/>
+	 <!-- 设置该应用使用的解码集 -->
+     <constant name="struts.i18n.encoding" value="utf-8"/>
+	<package name="default" namespace="/" extends="struts-default">
+		<global-allowed-methods>regex:.*</global-allowed-methods>
+		<action name="*_*" class="{1}Action" method="{2}">
+			<!-- 配置fileUpload拦截器-->
+			<interceptor-ref name="fileUpload">
+			<!-- 配置允许上传的文件类型-->
+				<param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg,image/jpg</param>
+			</interceptor-ref>
+			<!-- 配置允许上传的文件大小 -->
+			<param name="maximumSize">102400</param>
+			 <!-- 默认的拦截器，必须要写 -->
+            <interceptor-ref name="defaultStack" />
+            <result name="News_success">/{1}.jsp</result>
+			<result name="List_success">/background/{1}_Findll.jsp</result>
+			<result name="editor_success">/background/{1}_edit.jsp</result>
+			<result name="edit_success" type="redirectAction">{1}_Findll</result>
+			<result name="delete_success" type="redirectAction">{1}_Findll</result>
+			<result name="login_success">/background/home.jsp</result>
+			<result name="login_error">/userLogin.jsp</result>
+			<result name="loginout">/userLogin.jsp</result>
+		</action>
+	</package> 
+	
+</struts>
